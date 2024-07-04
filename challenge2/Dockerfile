@@ -1,20 +1,20 @@
-# Use the official Node.js image as the base image
+#making an image for Node.js
 FROM node:14
 
-# Set the working directory
+#setting the directory
 WORKDIR /usr/src/app
 
-# Copy package.json and package-lock.json to the working directory
+#copying package files 
 COPY package*.json ./
 
-# Install the dependencies
+#installing node dependencies
 RUN npm install
 
-# Copy the rest of the application code to the working directory
+#copying the code to the directory
 COPY . .
 
-# Expose the port the app runs on
+#exposing the port 
 EXPOSE 3000
 
-# Command to run the application
+#cmds to run the application
 CMD ["node", "server.js"]
