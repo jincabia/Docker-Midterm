@@ -59,6 +59,7 @@ app.get('/api/books', (req, res) => {
     pool.getConnection((err, connection) => {
         if (err) {
             console.error('Error connecting to database: ' + err.stack);
+            console.error(err)
             return res.status(500).json({ error: 'Database error' });
         }
 
@@ -67,6 +68,8 @@ app.get('/api/books', (req, res) => {
 
             if (error) {
                 console.error('Error querying database: ' + error.stack);
+                console.error(error)
+
                 return res.status(500).json({ error: 'Database error' });
             }
 
