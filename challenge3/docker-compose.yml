@@ -14,11 +14,12 @@ services:
     build: ./docker/api
     ports:
       - "3000:3000"
+    
     environment:
-      DB_HOST: db
-      DB_USERNAME: root
-      DB_PASSWORD: password
-      DB_DATABASE: dockerChallenge
+       DB_HOST: ${DBHOST}
+       DB_USERNAME: ${DBUSERNAME}
+       DB_PASSWORD: ${DBPASSWORD}
+       DB_DATABASE: ${DBDATABASE}
     depends_on:
       - db
 
@@ -26,10 +27,15 @@ services:
     image: mariadb:latest
     container_name: dockerDB
     environment:
-      MARIADB_ROOT_PASSWORD: password
-      MYSQL_DATABASE: dockerChallenge
-      MYSQL_USER: root
-      MYSQL_PASSWORD: password
+      
+      MARIADB_ROOT_PASSWORD: ${MARIADBROOTPASSWORD}
+      MYSQL_DATABASE: ${MYSQLDATABASE}
+      MYSQL_USER: ${MYSQLUSER}
+      MYSQL_PASSWORD: ${MYSQLPASSWORD}
+
+
+
+
     volumes:
       - db_data:/var/lib/mysql
 
